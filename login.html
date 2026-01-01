@@ -3,39 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>چوونەژوورەوە - مامۆستا ئیبراهیم</title>
+    <title>Login - Mamosta Ibrahim</title>
+    <link rel="manifest" href="manifest.json">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body {
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1509228468518-180dd482180c?q=80&w=1600');
-            background-size: cover; background-position: center;
-            height: 100vh; display: flex; justify-content: center; align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1509228468518-180dd482180c?q=80&w=1600');
+            background-size: cover; height: 100vh; display: flex; justify-content: center; align-items: center;
         }
         .login-card {
-            background: rgba(0, 0, 0, 0.85); padding: 50px; border-radius: 8px;
-            width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-top: 4px solid #e50914;
+            background: rgba(0, 0, 0, 0.9); padding: 40px; border-radius: 12px;
+            width: 90%; max-width: 380px; border-top: 5px solid #e50914; text-align: center;
         }
-        h2 { color: #fff; margin-bottom: 30px; font-size: 2rem; text-align: center; }
-        .input-group { margin-bottom: 20px; }
+        h2 { color: #fff; margin-bottom: 25px; font-size: 1.8rem; }
         input {
-            width: 100%; padding: 15px; border-radius: 5px; border: none;
-            background: #333; color: white; font-size: 16px; outline: none;
+            width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 5px;
+            border: none; background: #333; color: white; outline: none; font-size: 16px;
         }
-        input:focus { background: #454545; border-bottom: 2px solid #e50914; }
         button {
             width: 100%; padding: 15px; border-radius: 5px; border: none;
-            background: #e50914; color: white; font-size: 18px; font-weight: bold;
-            cursor: pointer; transition: 0.2s;
+            background: #e50914; color: white; font-weight: bold; cursor: pointer; font-size: 18px;
         }
-        button:hover { background: #b20710; }
-        #error-msg { color: #e50914; margin-top: 15px; text-align: center; font-size: 14px; min-height: 20px; }
+        #error-msg { color: #e50914; margin-top: 15px; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="login-card">
         <h2>چوونەژوورەوە</h2>
-        <div class="input-group"><input type="email" id="email" placeholder="ئیمەیڵ"></div>
-        <div class="input-group"><input type="password" id="password" placeholder="وشەی نهێنی"></div>
+        <input type="email" id="email" placeholder="ئیمەیڵ">
+        <input type="password" id="password" placeholder="وشەی نهێنی">
         <button id="loginBtn">Login</button>
         <p id="error-msg"></p>
     </div>
@@ -56,18 +52,20 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        document.getElementById('loginBtn').addEventListener('click', async () => {
+        document.getElementById('loginBtn').onclick = async () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const errorMsg = document.getElementById('error-msg');
-
             try {
                 await signInWithEmailAndPassword(auth, email, password);
                 window.location.href = "index.html";
-            } catch (error) {
-                errorMsg.innerText = "ئیمەیڵ یان وشەی نهێنی هەڵەیە!";
+            } catch (e) {
+                document.getElementById('error-msg').innerText = "زانیارییەکان هەڵەن!";
             }
-        });
+        };
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
     </script>
 </body>
 </html>
