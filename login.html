@@ -4,176 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>چوونەژوورەوە | Kurd Platform</title>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        body {
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1574267432553-4b20266629a7?q=80&w=1600');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .login-container {
-            background: rgba(15, 15, 15, 0.95);
-            padding: 40px 30px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 420px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            border: 1px solid #333;
-            text-align: center;
-        }
-
-        .logo-area i { color: #e50914; font-size: 50px; margin-bottom: 10px; }
-        h2 { font-size: 24px; margin-bottom: 10px; color: #fff; }
-        
-        .info-text {
-            background: rgba(229, 9, 20, 0.1);
-            border-right: 4px solid #e50914;
-            padding: 10px;
-            font-size: 13px;
-            line-height: 1.6;
-            text-align: right;
-            margin-bottom: 25px;
-            border-radius: 4px;
-        }
-
-        .input-group { margin-bottom: 15px; position: relative; }
-        input {
-            width: 100%;
-            padding: 14px 15px;
-            background: #333;
-            border: 1px solid transparent;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-        }
-        input:focus { border-color: #e50914; background: #444; }
-
-        .login-btn {
-            width: 100%;
-            padding: 14px;
-            background: #e50914;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-        .login-btn:hover { background: #b20710; transform: translateY(-2px); }
-
-        .subscription-box {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-        }
-        .price-tag { color: #ffeb3b; font-weight: bold; font-size: 15px; margin-bottom: 15px; display: block; }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .contact-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        .whatsapp { background: #25d366; }
-        .viber { background: #7360f2; }
-        .contact-btn:hover { opacity: 0.8; transform: scale(1.05); }
-
-        #error-msg { color: #ff4d4d; margin-top: 15px; font-size: 14px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background: #000; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+        .login-card { background: #111; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; border: 1px solid #333; text-align: center; }
+        .logo i { color: #e50914; font-size: 50px; margin-bottom: 10px; }
+        .info { background: #1a1a1a; padding: 10px; border-radius: 8px; font-size: 13px; margin: 20px 0; border-right: 4px solid #e50914; text-align: right; }
+        input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 5px; border: none; background: #222; color: white; }
+        .login-btn { width: 100%; padding: 12px; background: #e50914; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .contact-links { display: flex; gap: 10px; margin-top: 20px; }
+        .c-btn { flex: 1; padding: 10px; border-radius: 5px; text-decoration: none; color: white; font-size: 14px; font-weight: bold; }
+        .wa { background: #25d366; } .vi { background: #7360f2; }
     </style>
 </head>
 <body>
-
-    <div class="login-container">
-        <div class="logo-area">
-            <i class="fas fa-play-circle"></i>
-            <h2>بەخێرهاتی بۆ کورد پلاتفۆرم</h2>
+    <div class="login-card">
+        <div class="logo"><i class="fas fa-play-circle"></i><h2>Kurd Platform</h2></div>
+        <div class="info">
+            • تایبەت بە دراما و فیلمە ناوخۆیی و جیهانییەکان.<br>
+            • بۆ دروستکردنی ئەکاونت نامە بۆ تیمی ماڵپەڕ بنێرە.<br>
+            • نرخی بەشداریکردن ٢٠ هەزار و بۆ هەمیشەییە.
         </div>
-
-        <div class="info-text">
-            • ئەم ماڵپەڕە تایبەتە بە بڵاوکردنەوەی دراما و فیلمەکانی ناوخۆ و جیهانی.
-        </div>
-
-        <div class="login-form">
-            <div class="input-group">
-                <input type="email" id="email" placeholder="ئیمەیڵ">
-            </div>
-            <div class="input-group">
-                <input type="password" id="password" placeholder="وشەی نهێنی">
-            </div>
-            <button class="login-btn" id="loginBtn">چوونەژوورەوە</button>
-            <p id="error-msg"></p>
-        </div>
-
-        <div class="subscription-box">
-            <p style="font-size: 13px; color: #aaa; margin-bottom: 8px;">بۆ دروستکردنی ئەکاونت نامە بنێرە بۆ تیمی ماڵپەڕ:</p>
-            <span class="price-tag">نرخی بەشداریکردن تەنها ٢٠ هەزار و بۆ هەمیشەییە</span>
-            
-            <div class="contact-links">
-                <a href="https://wa.me/9647508615141" class="contact-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i> واتسئاپ
-                </a>
-                <a href="viber://chat?number=%2B9647508615141" class="contact-btn viber">
-                    <i class="fab fa-viber"></i> ڤایبەر
-                </a>
-            </div>
+        <input type="email" id="email" placeholder="ئیمەیڵ">
+        <input type="password" id="password" placeholder="وشەی نهێنی">
+        <button class="login-btn" id="loginBtn">چوونەژوورەوە</button>
+        <p id="error-msg" style="color:red; font-size:12px; margin-top:10px;"></p>
+        <div class="contact-links">
+            <a href="https://wa.me/9647508615141" class="c-btn wa">واتسئاپ</a>
+            <a href="viber://chat?number=%2B9647508615141" class="c-btn vi">ڤایبەر</a>
         </div>
     </div>
-
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyATrfYzS1tRQQYuG0xQhsQVkOwuT9L_oGM",
-            authDomain: "kurdcenama-f9682.firebaseapp.com",
-            projectId: "kurdcenama-f9682",
-            storageBucket: "kurdcenama-f9682.firebasestorage.app",
-            messagingSenderId: "792140634516",
-            appId: "1:792140634516:web:defe9a2d719af231cfd781"
-        };
-
+        const firebaseConfig = { apiKey: "AIzaSyATrfYzS1tRQQYuG0xQhsQVkOwuT9L_oGM", authDomain: "kurdcenama-f9682.firebaseapp.com", projectId: "kurdcenama-f9682", storageBucket: "kurdcenama-f9682.firebasestorage.app", messagingSenderId: "792140634516", appId: "1:792140634516:web:defe9a2d719af231cfd781" };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-
-        document.getElementById('loginBtn').addEventListener('click', async () => {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorMsg = document.getElementById('error-msg');
-
+        document.getElementById('loginBtn').onclick = async () => {
             try {
-                await signInWithEmailAndPassword(auth, email, password);
+                await signInWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('password').value);
                 window.location.href = "index.html";
-            } catch (error) {
-                errorMsg.innerText = "ئیمەیڵ یان وشەی نهێنی هەڵەیە!";
-            }
-        });
+            } catch (e) { document.getElementById('error-msg').innerText = "هەڵەیەک هەیە!"; }
+        };
+        if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js'); }
     </script>
 </body>
 </html>
