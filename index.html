@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماموستا ابراهیم خلیل جمیل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* هەموو ئەو ستایلانەی خۆت لێرە دایبنێ (بۆ ئەوەی نامەکە زۆر درێژ نەبێت لای من، تەنها گۆڕانکارییەکان دەنووسم) */
+        * { box-sizing: border-box; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; display:none; } /* سەرەتا وون دەبێت تا دڵنیا دەبینەوە لۆگینە */
+        header { padding: 60px 20px; text-align: center; background: linear-gradient(to bottom, #1a0000, #000); }
+        .logo-icon { color: #e50914; font-size: 55px; margin-bottom: 10px; }
+        h1 { color: #e50914; font-size: 3.5rem; margin: 0; }
+        .controls-section { position: sticky; top: 0; background: rgba(0,0,0,0.95); z-index: 100; padding: 20px; border-bottom: 1px solid #222; }
+        #movieSearch { width: 100%; padding: 15px; border-radius: 30px; border: 1px solid #333; background: #111; color: white; }
+        .main-wrapper { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; padding: 40px; }
+        .product-card { background: #141414; border-radius: 12px; overflow: hidden; border: 1px solid #222; transition: 0.3s; }
+        .product-card img { width: 100%; height: 350px; object-fit: cover; }
+        .btn-link { display: inline-block; padding: 10px 20px; background: #e50914; color: white; text-decoration: none; border-radius: 4px; margin-top: 10px; }
+        .logout-float { position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: #e50914; color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; border: none; font-weight: bold; }
+        .hide { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <button class="logout-float" id="logoutBtn">چوونەدەرەوە</button>
+
+    <header>
+        <div class="logo-icon"><i class="fas fa-clapperboard"></i></div>
+        <h1>ماموستا ابراهیم خلیل جمیل</h1>
+        <p style="color:#aaa;">پلاتفۆرمی تایبەتی مامۆستا بۆ بابەتەکانی کۆمپیوتەر</p>
+    </header>
+
+    <div class="controls-section">
+        <input type="text" id="movieSearch" placeholder="ناڤێ بابه تی بنڤیسه...." onkeyup="filterMovies()">
+    </div>
+
+    <div class="main-wrapper" id="movieList">
+        <div class="product-card" data-category="کوردی">
+            <img src="ashraf.jpeg">
+            <div style="padding:20px; text-align:center;">
+                <h3>ئەشرەف و ڕویا</h3>
+                <a href="ashraf.html" class="btn-link">تەماشا بکە</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyATrfYzS1tRQQYuG0xQhsQVkOwuT9L_oGM",
+            authDomain: "kurdcenama-f9682.firebaseapp.com",
+            projectId: "kurdcenama-f9682",
+            storageBucket: "kurdcenama-f9682.firebasestorage.app",
+            messagingSenderId: "792140634516",
+            appId: "1:792140634516:web:defe9a2d719af231cfd781"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // پشکنینی لۆگین
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.body.style.display = "block"; // پیشاندانی لاپەڕەکە ئەگەر لۆگین بوو
+            } else {
+                window.location.href = "login.html"; // گەڕانەوە بۆ لۆگین ئەگەر لۆگین نەبوو
+            }
+        });
+
+        // دوگمەی چوونەدەرەوە
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth);
+        });
+
+        // فەنکشنەکانی فلتەر (خۆت نووسیوتن)
+        window.filterMovies = function() {
+            let input = document.getElementById('movieSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                let title = card.querySelector('h3').innerText.toLowerCase();
+                card.classList.toggle('hide', !title.includes(input));
+            });
+        }
+    </script>
+</body>
+</html>
