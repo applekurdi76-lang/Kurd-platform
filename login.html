@@ -3,37 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Mamosta Ibrahim</title>
-    <link rel="manifest" href="manifest.json">
+    <title>چوونەژوورەوە | Kurd Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
         body {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1509228468518-180dd482180c?q=80&w=1600');
-            background-size: cover; height: 100vh; display: flex; justify-content: center; align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1574267432553-4b20266629a7?q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
         }
-        .login-card {
-            background: rgba(0, 0, 0, 0.9); padding: 40px; border-radius: 12px;
-            width: 90%; max-width: 380px; border-top: 5px solid #e50914; text-align: center;
+
+        .login-container {
+            background: rgba(15, 15, 15, 0.95);
+            padding: 40px 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            text-align: center;
         }
-        h2 { color: #fff; margin-bottom: 25px; font-size: 1.8rem; }
+
+        .logo-area i { color: #e50914; font-size: 50px; margin-bottom: 10px; }
+        h2 { font-size: 24px; margin-bottom: 10px; color: #fff; }
+        
+        .info-text {
+            background: rgba(229, 9, 20, 0.1);
+            border-right: 4px solid #e50914;
+            padding: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+            text-align: right;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+
+        .input-group { margin-bottom: 15px; position: relative; }
         input {
-            width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 5px;
-            border: none; background: #333; color: white; outline: none; font-size: 16px;
+            width: 100%;
+            padding: 14px 15px;
+            background: #333;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
         }
-        button {
-            width: 100%; padding: 15px; border-radius: 5px; border: none;
-            background: #e50914; color: white; font-weight: bold; cursor: pointer; font-size: 18px;
+        input:focus { border-color: #e50914; background: #444; }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
         }
-        #error-msg { color: #e50914; margin-top: 15px; font-size: 14px; }
+        .login-btn:hover { background: #b20710; transform: translateY(-2px); }
+
+        .subscription-box {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        .price-tag { color: #ffeb3b; font-weight: bold; font-size: 15px; margin-bottom: 15px; display: block; }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .contact-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .whatsapp { background: #25d366; }
+        .viber { background: #7360f2; }
+        .contact-btn:hover { opacity: 0.8; transform: scale(1.05); }
+
+        #error-msg { color: #ff4d4d; margin-top: 15px; font-size: 14px; }
     </style>
 </head>
 <body>
-    <div class="login-card">
-        <h2>چوونەژوورەوە</h2>
-        <input type="email" id="email" placeholder="ئیمەیڵ">
-        <input type="password" id="password" placeholder="وشەی نهێنی">
-        <button id="loginBtn">Login</button>
-        <p id="error-msg"></p>
+
+    <div class="login-container">
+        <div class="logo-area">
+            <i class="fas fa-play-circle"></i>
+            <h2>بەخێرهاتی بۆ کورد پلاتفۆرم</h2>
+        </div>
+
+        <div class="info-text">
+            • ئەم ماڵپەڕە تایبەتە بە بڵاوکردنەوەی دراما و فیلمەکانی ناوخۆ و جیهانی.
+        </div>
+
+        <div class="login-form">
+            <div class="input-group">
+                <input type="email" id="email" placeholder="ئیمەیڵ">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="وشەی نهێنی">
+            </div>
+            <button class="login-btn" id="loginBtn">چوونەژوورەوە</button>
+            <p id="error-msg"></p>
+        </div>
+
+        <div class="subscription-box">
+            <p style="font-size: 13px; color: #aaa; margin-bottom: 8px;">بۆ دروستکردنی ئەکاونت نامە بنێرە بۆ تیمی ماڵپەڕ:</p>
+            <span class="price-tag">نرخی بەشداریکردن تەنها ٢٠ هەزار و بۆ هەمیشەییە</span>
+            
+            <div class="contact-links">
+                <a href="https://wa.me/9647508615141" class="contact-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i> واتسئاپ
+                </a>
+                <a href="viber://chat?number=%2B9647508615141" class="contact-btn viber">
+                    <i class="fab fa-viber"></i> ڤایبەر
+                </a>
+            </div>
+        </div>
     </div>
 
     <script type="module">
@@ -52,20 +162,18 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        document.getElementById('loginBtn').onclick = async () => {
+        document.getElementById('loginBtn').addEventListener('click', async () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-msg');
+
             try {
                 await signInWithEmailAndPassword(auth, email, password);
                 window.location.href = "index.html";
-            } catch (e) {
-                document.getElementById('error-msg').innerText = "زانیارییەکان هەڵەن!";
+            } catch (error) {
+                errorMsg.innerText = "ئیمەیڵ یان وشەی نهێنی هەڵەیە!";
             }
-        };
-
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
+        });
     </script>
 </body>
 </html>
